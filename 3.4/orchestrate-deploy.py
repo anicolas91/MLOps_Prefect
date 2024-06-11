@@ -132,4 +132,10 @@ def main_flow(
 
 
 if __name__ == "__main__":
-    main_flow()
+    main_flow.deploy(
+        name="nyc-taxi-deployment-deploy",
+        work_pool_name="zoompool",
+        tags=["testing", "tutorial","green-taxi","2023","serve"],
+        description="trains a model of trip duration using nyc green taxi 2023",
+        version="tutorial/serve",
+    )
