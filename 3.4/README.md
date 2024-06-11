@@ -71,7 +71,10 @@ Deploying flows through the serve method is a fast way to start scheduling flows
 3. Call the `deploy` method on the main flow you are about to deploy.
 4. Add deployment options to the `deploy` method such as `name` and `work_pool_name`.
    ```bash
-       main_flow.deploy(
+    main_flow.from_source(
+        source="https://github.com/anicolas91/MLOps_Prefect.git",
+        entrypoint="3.4/orchestrate-deploy.py:main_flow",
+    ).deploy(
         name="nyc-taxi-deployment-deploy",
         work_pool_name="zoompool",
         tags=["testing", "tutorial","green-taxi","2023","serve"],
@@ -91,6 +94,6 @@ Deploying flows through the serve method is a fast way to start scheduling flows
 #### NOTE:
 Deployments for workers are configured with `deploy`, which requires additional configuration. A deployment created with `serve` cannot be used with a work pool.
 
-### NOTE 2:
+#### NOTE 2:
 The primary reason to use work pools is for dynamic infrastructure provisioning and configuration. For example, you might have a workflow that has expensive infrastructure requirements and is run infrequently. In this case, **you don't want an idle process running within that infrastructure**.
    

@@ -132,7 +132,10 @@ def main_flow(
 
 
 if __name__ == "__main__":
-    main_flow.deploy(
+    main_flow.from_source(
+        source="https://github.com/anicolas91/MLOps_Prefect.git",
+        entrypoint="3.4/orchestrate-deploy.py:main_flow",
+    ).deploy(
         name="nyc-taxi-deployment-deploy",
         work_pool_name="zoompool",
         tags=["testing", "tutorial","green-taxi","2023","serve"],
