@@ -31,11 +31,11 @@
 2. Add deployment options to the `serve` method, such as `name`, `corn`, `tags`, `description`, or `version`.
     ```bash
         main_flow.serve(
-        name="nyc-taxi-deployment",
+        name="nyc-taxi-deployment-serve",
         # cron="* * * * *", # every minute of every day
-        tags=["testing", "tutorial","green-taxi","2023"],
+        tags=["testing", "tutorial","green-taxi","2023","serve"],
         description="trains a model of trip duration using nyc green taxi 2023 data",
-        version="tutorial/deployments",
+        version="tutorial/serve",
         )
     ```
 3. Run the python script.
@@ -44,7 +44,7 @@
    ```
 4. Start a run of the flow from the CLI
    ```bash
-   prefect deployment run 'main_flow/nyc-taxi-deployment'
+   prefect deployment run 'main-flow/nyc-taxi-deployment-serve'
    ```
 
 #### NOTE 1:
@@ -69,7 +69,7 @@ Deploying flows through the serve method is a fast way to start scheduling flows
    prefect worker start -p zoompool -t process
    ```
 3. Call the `deploy` method on the main flow you are about to deploy.
-4. Add deployment options to the `deploy` method such as `name` and `work_pool_name`.
+4. Add deployment options to the `deploy` method such as `name` and `work_pool_name`. Note that for process it needs an actual remote source so just sync github with the latest file and use that as a source.
    ```bash
     main_flow.from_source(
         source="https://github.com/anicolas91/MLOps_Prefect.git",
@@ -77,9 +77,9 @@ Deploying flows through the serve method is a fast way to start scheduling flows
     ).deploy(
         name="nyc-taxi-deployment-deploy",
         work_pool_name="zoompool",
-        tags=["testing", "tutorial","green-taxi","2023","serve"],
+        tags=["testing", "tutorial","green-taxi","2023","deploy"],
         description="trains a model of trip duration using nyc green taxi 2023",
-        version="tutorial/serve",
+        version="tutorial/deploy",
     )
     ```
 5. Run the python script.
