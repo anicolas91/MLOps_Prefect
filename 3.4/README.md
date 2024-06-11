@@ -88,12 +88,14 @@ Deploying flows through the serve method is a fast way to start scheduling flows
    ```
 6. start a run of the flow from the CLI
    ```bash
-   prefect deployment run main_flow/nyc-taxi-deployment
+   prefect deployment run main-flow/nyc-taxi-deployment-deploy
    ```
 
-#### NOTE:
+#### NOTE 1:
 Deployments for workers are configured with `deploy`, which requires additional configuration. A deployment created with `serve` cannot be used with a work pool.
 
 #### NOTE 2:
 The primary reason to use work pools is for dynamic infrastructure provisioning and configuration. For example, you might have a workflow that has expensive infrastructure requirements and is run infrequently. In this case, **you don't want an idle process running within that infrastructure**.
-   
+
+#### NOTE 3:
+Prefect intentially replaces the `_` in function names with `-`, which explains why `main_flow` became `main-flow` in the last step. It's a feature not a bug. See [here](https://github.com/PrefectHQ/prefect/issues/6284).

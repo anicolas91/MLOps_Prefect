@@ -138,7 +138,7 @@ if __name__ == "__main__":
     ).deploy(
         name="nyc-taxi-deployment-deploy",
         work_pool_name="zoompool",
-        tags=["testing", "tutorial","green-taxi","2023","serve"],
+        tags=["testing", "tutorial","green-taxi","2023","deploy"],
         description="trains a model of trip duration using nyc green taxi 2023",
-        version="tutorial/serve",
+        version="tutorial/deploy",
     )
